@@ -18,13 +18,13 @@ export default class BaseResultProcessing {
     
     predicate(item:any,parsedResult:Expression | Expression[]): boolean{
         
-        var expressions : Expression[]= null;
+        var expressions : Expression | Expression[]= null;
         if(_.isArray(parsedResult)){
-            expressions = parsedResult;
-        } else if(_.isArray(parsedResult.expressions)){
-            expressions = parsedResult.expressions;
+            expressions = (parsedResult as Expression[]);
+        } else if(_.isArray((parsedResult as Expression).expressions)){
+            expressions = (parsedResult as Expression).expressions;
         }else{
-            return  this.predicateSingle(item, parsedResult);  
+            return  this.predicateSingle(item, (parsedResult as Expression));  
         }
         
         var result:boolean = true;

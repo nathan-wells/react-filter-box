@@ -3,7 +3,7 @@ import * as _  from "lodash";
 import FilterQueryParser from "./FilterQueryParser";
 import BaseAutoCompleteHandler from "./BaseAutoCompleteHandler";
 // import ReactCodeMirror from "react-codemirror";
-var ReactCodeMirror:any = require("react-codemirror");
+var ReactCodeMirror:any = (require("react-codemirror2") as any).UnControlled;
 import "codemirror/addon/hint/show-hint";
 
 import * as CodeMirror from "codemirror";
@@ -75,14 +75,14 @@ export default class FilterInput extends React.Component<any,any> {
          if(cursor.ch ==0 ) return "";
          return this.doc.getRange({line:cursor.line,ch:cursor.ch-1}, cursor);
     }
-    codeMirrorRef(ref:{codeMirror:ExtendedCodeMirror}) {
+    codeMirrorRef(ref:{editor:ExtendedCodeMirror}) {
         if (ref == null) return;
-        if (this.codeMirror == ref.codeMirror) {
+        if (this.codeMirror == ref.editor) {
             return;
         }
 
-        this.codeMirror = ref.codeMirror;
-        this.doc = ref.codeMirror.getDoc();   
+        this.codeMirror = ref.editor;
+        this.doc = this.codeMirror.getDoc();   
         this.autoCompletePopup = new AutoCompletePopup(this.codeMirror,(text)=>{
             return this.props.needAutoCompleteValues(this.codeMirror, text);
         })
@@ -90,27 +90,27 @@ export default class FilterInput extends React.Component<any,any> {
         this.autoCompletePopup.customRenderCompletionItem = this.props.customRenderCompletionItem;
         this.autoCompletePopup.pick = this.props.autoCompletePick;
 
-        ref.codeMirror.on("beforeChange", function (instance, change) {
+        this.codeMirror.on("beforeChange", function (instance, change) {
             var newtext = change.text.join("").replace(/\n/g, ""); // remove ALL \n !
             change.update(change.from, change.to, [newtext] as any);
             return true;
         });
 
-        ref.codeMirror.on("changes", ()=>{
+        this.codeMirror.on("changes", ()=>{
             this.handlePressingAnyCharacter();
         })
 
-        ref.codeMirror.on("focus", (cm,e?)=>{
+        this.codeMirror.on("focus", (cm,e?)=>{
             this.handlePressingAnyCharacter();
             this.props.onFocus(e);
         })
 
-        ref.codeMirror.on("blur", (cm,e?)=>{
+        this.codeMirror.on("blur", (cm,e?)=>{
             this.onSubmit(this.doc.getValue());
             this.props.onBlur(e)
         })
 
-        ref.codeMirror.on("keyup", (cm:ExtendedCodeMirror,e?:KeyboardEvent) => {
+        this.codeMirror.on("keyup", (cm:ExtendedCodeMirror,e?:KeyboardEvent) => {
             if (e.keyCode == 13) {
                 // console.log("enter" + Math.random());
                 this.onSubmit(this.doc.getValue());                
