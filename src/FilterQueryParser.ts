@@ -34,7 +34,9 @@ export default class FilterQueryParser {
 
     private parseQuery(query:string){
         this.parseTrace.clear();
-        return this.parser.parse(query, { parseTrace: this.parseTrace });
+        let opts = {}
+        opts['parseTrace'] = this.parseTrace
+        return this.parser.parse(query, opts as any);
     }
 
     getSugessions(query: string): HintInfo[] {

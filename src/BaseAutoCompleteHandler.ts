@@ -20,7 +20,7 @@ export default class BaseAutoCompleteHandler {
         return text;
     }
 
-    buildDefaultObjOrGetOriginal(value:string|Object, type:string): HintInfo{
+    buildDefaultObjOrGetOriginal(value:string, type:string): HintInfo{
         if(_.isString(value)){
             return {
                 value: this.quote(value),
@@ -37,8 +37,7 @@ export default class BaseAutoCompleteHandler {
     handleParseError(parser: ExtendedParser, parseTrace: ParseTrace, error: PEG.PegjsError):HintInfo[] {
 
         var trace = parseTrace;
-        console.log("error: ", error);
-        return _.flatMap(error.expected, (f: PEG.ExpectedItem) => {
+        return _.flatMap(error.expected, (f: any) => {
             var result:HintInfo[] = [];
             if (f.type == "literal") {
                 result= _.map([f.text],f=> { return { value:f, type:"literal" } });
