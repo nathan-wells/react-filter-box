@@ -14,6 +14,7 @@ import ParsedError from "./ParsedError";
 export default class ReactFilterBox extends React.Component<any,any> {
 
     public static defaultProps: any = {
+        className:null,
         onParseOk: ()=>{},
         onParseError: ()=>{},
         onChange: ()=>{},
@@ -80,10 +81,14 @@ export default class ReactFilterBox extends React.Component<any,any> {
         if(this.state.isError){
             className += " error"
         }
+        if(this.props.className) {
+            className += " " + this.props.className;
+        }
 
         return <div className={className}>
             <FilterInput
             autoCompletePick = {this.props.autoCompletePick}
+            className={this.props.className}
             customRenderCompletionItem= {this.props.customRenderCompletionItem}
             onBlur={this.onBlur.bind(this)}
             onFocus={this.onFocus.bind(this)}
