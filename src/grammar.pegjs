@@ -2,7 +2,7 @@
  * Grammar
  * ==========================
  *
- * Accepts expressions like: nha == nhat AND (nhat == nha or "nhat " contains "tt") OR nhat == "test"
+ * Accepts expressions like: nha == nhat AND nhat == nha or "nhat " contains "tt" OR nhat == "test"
  */
 
 {
@@ -23,11 +23,7 @@ Expression
     }
 
 Condition
-  = "(" _ expr:Expression _ ")" 
-  		{   
-        	return {expressions:expr}; 
-        }
-  / ThreeFactorCondition 
+  = ThreeFactorCondition
   
 ThreeFactorCondition
   = category:ValidName ws operator:Operator ws value:ValidValue 
@@ -59,7 +55,7 @@ ValidName  "category"
         return value;
       }
 ValidToken
-  = [^ \(\)\"\t\n\r]
+  = [^ \"\t\n\r]
 
 ws "whitespace"
   = [ \t\n\r]+

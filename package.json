@@ -7,7 +7,7 @@
     "lint": "eslint src",
     "test": "karma start",
     "dist": "webpack --config webpack.prod.config.js --progress -p",
-    "component-package": "webpack --config webpack.component.config.js --progress -p && npm run less",
+    "component-package": "webpack --config webpack.component.config.js --progress -p && yarn less",
     "less": "lessc ./src/ReactFilterBox.less ./lib/react-filter-box.css",
     "prepublish": "npm run component-package"
   },

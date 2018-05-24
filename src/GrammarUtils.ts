@@ -2,7 +2,7 @@ import * as _ from "lodash";
 class GrammarUtils {
 
     isSeparator(c: string) {
-        return c == " " || c == "\r" || c == "\n" || c == "\t" || c == "(" || c == ")";
+        return c == " " || c == "\r" || c == "\n" || c == "\t";
     }
 
     isWhiteSpace(c:string) {

@@ -34,11 +34,6 @@ CodeMirror.defineMode<ModeState>("filter-mode", function (config: CodeMirror.Edi
             if(isEmpty(stream.peek())){
                 stream.eatSpace();
                 return null;    
-            }            
-            
-            if (stream.peek() == "(" || stream.peek() == ")") {
-                stream.next();
-                return "bracket";
             }
             
             if(stream.match("AND", true, true) || stream.match("OR", true,true)) {
