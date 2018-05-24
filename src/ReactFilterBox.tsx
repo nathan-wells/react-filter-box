@@ -57,9 +57,12 @@ export default class ReactFilterBox extends React.Component<any,any> {
     onChange(query:string){
         var result = this.parser.parse(query);
         if((result as ParsedError).isError){
-            this.setState({isError:true})
+            // Only submit parse errors on submit...
+            // this.setState({isError:true})
         }else{
-            this.setState({isError:false})
+            this.setState({isError:false});
+            // Call parseOk to update styles/etc..
+            this.props.onParseOk(result);
         }
         
         this.props.onChange(query, result);
