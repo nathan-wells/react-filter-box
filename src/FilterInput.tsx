@@ -106,6 +106,7 @@ export default class FilterInput extends React.Component<any, any> {
     render() {
         return (
             <ReactCodeMirror
+                autoCursor={false}
                 ref={this.codeMirrorRef.bind(this)}
                 onChange={this.handleEditorChange.bind(this)}
                 options={this.options}
