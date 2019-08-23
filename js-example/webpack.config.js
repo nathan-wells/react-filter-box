@@ -2,7 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
-  devtool: 'eval',
+  // devtool: 'eval',
+  mode: "development",
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
@@ -17,13 +18,13 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin()
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
-      loaders: ['react-hot-loader', 'babel-loader'],
+      loaders: ['babel-loader'],
       include: path.join(__dirname, 'src')
-    },{
-        test: [/\.less$/,/\.css$/],
-        loader: "style-loader!css-loader!less-loader"
-      }]
+    }, {
+      test: [/\.less$/, /\.css$/],
+      loader: "style-loader!css-loader!less-loader"
+    }]
   }
 };

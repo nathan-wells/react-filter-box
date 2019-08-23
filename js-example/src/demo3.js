@@ -49,9 +49,6 @@ class CustomResultProcessing extends SimpleResultProcessing {
 
 
 export default class Demo3 extends React.Component {
-
-    options: AutoCompleteOption[];
-    customAutoComplete:CustomAutoComplete;
     constructor(props) {
         super(props);
         this.state = {
@@ -61,20 +58,20 @@ export default class Demo3 extends React.Component {
 
         this.options = [
             {
-                columField: "Name",
+                columnField: "Name",
                 type: "text"
             },
             {
-                columField: "Description",
+                columnField: "Description",
                 type: "text"
             },
             {
-                columField: "Status",
+                columnField: "Status",
                 type: "selection"
             },
             {
                 columnText: "Email @",
-                columField: "Email",
+                columnField: "Email",
                 type: "text"
             }
         ];

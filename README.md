@@ -1,9 +1,6 @@
 >## React Filter Box
 
-![alt tag](https://mskxxa-dm2306.files.1drv.com/y3mthZuvqevAuYkXsYFKwmnNtgAlPk7dmhPKCGtpvJf4YnxhYVMA0xUe7Q1wqVbEysoPMoJda7raS716lg8eJbjBCUFWzocAqcoMLc8hoXVERmOOsYKO4lPpoqLJVOZXhHhuwkGMU9MpfofIfWDhQo2Xke9VK1YP3uaaqvZLG41I4A?width=1024&height=374&cropmode=none)
-
-
-![alt tag](https://nckxxa-dm2306.files.1drv.com/y3mQggy6Aaj3cCYX_4yCfgYEBYjzuknwQaT97pzAlfEriw3606yGJWpQXldZMU92lLiFlUAmoqMMBCKPJC6_TW8ys78hz1iuA9DwZQSmV5wF65bsRjHdX5pYcCQUNtHC4YelH90GnjoG4Jx7Mlk-WzutlAr47l2oGUDLY6BJEEXsyM?width=1024&height=444&cropmode=none)
+![alt tag](https://github.com/nhabuiduc/react-filter-box/raw/master/images/react-filter-box-demo.png)
 
 A Simple filter box mainly used to filter data in Grid or Table,  which supports Condition AND/OR, 
 and struture Category-operator-Value. This library is inspired by React Structured Filter library,
@@ -13,7 +10,7 @@ For example: Column1 contains value1 AND (Column2 == Ok)
 
 Demo: https://nhabuiduc.github.io
 
-##Features:
+## Features:
 
 - Support Syntax Highlight
 - Support AutoComplete
@@ -21,7 +18,7 @@ Demo: https://nhabuiduc.github.io
 - Allow to custom AutoComplete rendering 
 - The result of filter is in Json format
 
-##Getting started:
+## Getting started:
 
 Install react-filter-box using npm.
 
@@ -32,7 +29,7 @@ Import library, and default stylesheet.
 ``import ReactFilterBox, {AutoCompleteOption,SimpleResultProcessing} from "react-filter-box";``   
 ``import "react-filter-box/lib/react-filter-box.css"``   
 
-##How to use:
+## How to use:
 
 
 Demo: https://nhabuiduc.github.io , which includes source code.
@@ -51,20 +48,20 @@ export default class App extends React.Component {
 
          this.options = [
             {
-                columField: "Name",
+                columnField: "Name",
                 type:"text"
             },
             {
-                columField: "Description",
+                columnField: "Description",
                 type:"text"
             },
             {
-                columField: "Status",
+                columnField: "Status",
                 type:"selection" // when using type selection, it will automatically sugest all posible values
             },
             {
                 columnText: "Email @",
-                columField: "Email",
+                columnField: "Email",
                 type:"text"
             }
         ];
@@ -100,7 +97,7 @@ export default class App extends React.Component {
 
 ```typescript
 export interface Option {
-    columField:string; // required
+    columnField:string; // required
     columnText?:string; // optional
     type: string; // require "text" or "selection"
 }
@@ -162,19 +159,11 @@ This method will return another function ** (value:string):void **, which you ca
 
  **autoCompleteHandler: BaseAutoCompleteHandler**
 
-## How to build this project
+## How to work this project
 
-This project is built on Typescripts so you need to install:
-- [Typings](https://www.npmjs.com/package/typings) (globally)
-
-``` npm install typings ```
-
--  
-
-
-
-
-
+- Run demo application ```yarn start```
+- Run test ```yarn test```
+- Package as library ```yarn component-package```
  
 
 ##License:  
