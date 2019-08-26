@@ -130,7 +130,7 @@ export default class AutoCompletePopup {
             if (text) {
                 values = _.filter(hintValues, f => {
                     var value = f.value as string;
-                    return _.isString(f.value) ? _.startsWith(value.toLowerCase(), text.toLowerCase()) : true;
+                    return _.isString(f.value) ? value.toLowerCase().includes(text.toLowerCase()) : true;
                 })
             }
 
